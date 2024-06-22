@@ -1,0 +1,25 @@
+services:
+  training-datasets-management: 
+    image: mongo
+    container_name: training-datasets-management-container
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27000:27017
+    networks:
+      - training-datasets-management-network
+
+  training-datasets-management-webapp: 
+    build: .
+    container_name: training-datasets-management-webapp-container
+    command: npm run dev
+    ports:
+      - 4000:4000
+    volumes:
+      - ./src:/training-datasets-management-webapp/src:ro
+    networks:
+      - training-datasets-management-network
+
+networks:
+  training-datasets-management-network: 
+    driver: bridge
