@@ -14,7 +14,7 @@ services:
     container_name: training-datasets-management-webapp-container
     command: npm run dev
     ports:
-      - 4000:4000
+      - 4000:3000
     volumes:
       - ./src:/training-datasets-management-webapp/src:ro
     networks:
