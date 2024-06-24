@@ -16,7 +16,11 @@ services:
     ports:
       - 4000:3000
     volumes:
-      - ./src:/training-datasets-management-webapp/src:ro
+      - ./src:/training-data-management-webapp/src:ro
+      - ./next.config.mjs:/training-data-management-webapp/next.config.mjs:ro
+    environment:
+      - NODE_ENV=development 
+      - WATCHPACK_POLLING=true
     networks:
       - training-datasets-management-network
 
