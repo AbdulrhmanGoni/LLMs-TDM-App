@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import Header from "@/components/header/Header";
 import { PropsWithChildren } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <main className="flex h-full flex-1">
               {children}
             </main>
+            <Toaster />
           </TooltipProvider>
         </ReactQueryProvider>
       </body>
