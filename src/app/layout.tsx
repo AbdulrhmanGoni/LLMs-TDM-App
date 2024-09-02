@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
+import Header from "@/components/header/Header";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -27,9 +29,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
+        <ReactQueryProvider>
+          <TooltipProvider>
+            <Header />
+            <main className="flex h-full flex-1">
+              {children}
+            </main>
+          </TooltipProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
