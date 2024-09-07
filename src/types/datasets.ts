@@ -9,3 +9,8 @@ type DatasetsOverview = {
   totalDatasets: number;
   addedDatasetsLastMonth: number;
 };
+
+type DatasetInstructionsPage = {
+  areThereMore: boolean;
+  instructions: Instruction[];
+};
