@@ -70,7 +70,22 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--secondary));
+  border-radius: 6px;
+}
+
+svg {
+  flex-shrink: 0;
 }
