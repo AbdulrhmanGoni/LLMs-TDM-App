@@ -10,7 +10,7 @@ type DatasetActivity = {
 } & ActivityBase;
 
 type InstructionActivity = {
-  instruction: InstructionBase;
+  instruction: Instruction;
   dataset: Dataset;
 } & ActivityBase;
 
