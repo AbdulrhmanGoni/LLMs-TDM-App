@@ -7,3 +7,8 @@ export default class FetchError<ErrorT = unknown> extends Error {
     this.error = details?.error;
   }
 }
+
+export type WithErrorAndRefetch<RestProps = unknown, ErrorT = unknown> = {
+  refetch: () => void;
+  error: FetchError<ErrorT> | null;
+} & RestProps;
