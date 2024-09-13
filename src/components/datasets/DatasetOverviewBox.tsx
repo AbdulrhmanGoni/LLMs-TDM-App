@@ -4,16 +4,16 @@ import { Card, CardTitle } from '../ui/card'
 import { DatabaseIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 import DatasetOverviewBoxLoading from './DatasetOverviewBoxLoading';
-import Alert from '../Alert';
+import DatasetOverviewBoxError from './DatasetOverviewBoxError';
 
 export default function DatasetOverviewBox() {
 
-    const { data, isFetching, error } = useDatasetsOverview()
+    const { data, isFetching, error, refetch } = useDatasetsOverview()
     const { push } = useRouter()
 
     return (
         isFetching ? <DatasetOverviewBoxLoading /> :
-            error ? <Alert variant='error' message='An Error happened while fetching dataset overview' /> : (
+            error ? <DatasetOverviewBoxError error={error} refetch={refetch} /> : (
                 <Card
                     className='flex flex-col justify-center flex-1 h-full p-6 cursor-pointer'
                     onClick={() => push("/datasets")}

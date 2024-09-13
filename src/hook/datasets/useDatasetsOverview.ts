@@ -1,16 +1,15 @@
 import fetchAPI from "@/lib/fetchAPI";
+import FetchError from "@/lib/FetchError";
 import { useQuery } from "@tanstack/react-query";
 
-type QueryResponse = { data: DatasetsOverview };
-
 export default function useDatasetsOverview() {
-  const { data, isFetching, error } = useQuery<QueryResponse>({
+  return useQuery<DatasetsOverview, FetchError>({
     queryKey: ["datasets-overview"],
     async queryFn() {
-      const { body } = await fetchAPI<QueryResponse>("datasets/overview");
-      return body;
+      const { body } = await fetchAPI<{ data: DatasetsOverview }>(
+        "datasets/overview"
+      );
+      return body.data;
     },
   });
-
-  return { data: data?.data, isFetching, error };
 }
