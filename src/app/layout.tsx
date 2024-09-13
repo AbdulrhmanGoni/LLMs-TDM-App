@@ -24,9 +24,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col gap-2 container px-2",
+          "min-h-screen bg-background font-sans antialiased flex flex-col gap-2 container !px-2",
           fontSans.variable
         )}
+        style={{ marginLeft: "auto !important", marginRight: "auto !important" }}
       >
         <ReactQueryProvider>
           <TooltipProvider>
