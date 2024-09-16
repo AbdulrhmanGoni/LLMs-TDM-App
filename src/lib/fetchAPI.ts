@@ -9,10 +9,7 @@ export default async function fetchAPI<DataT = unknown, ErrorT = unknown>(
     search?: Record<string, string>;
   } = {}
 ) {
-  const { body, status, success } = await customFetchAPI<DataT, ErrorT>(
-    path,
-    options
-  );
+  const { body, status, success } = await customFetchAPI<DataT>(path, options);
 
   if (success) {
     return { body, status };

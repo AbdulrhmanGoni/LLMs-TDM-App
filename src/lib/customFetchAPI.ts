@@ -1,7 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 
-export default async function customFetchAPI<DataT = unknown, ErrorT = unknown>(
+export default async function customFetchAPI<DataT = unknown>(
   path: string,
   options: {
     method?: string;
