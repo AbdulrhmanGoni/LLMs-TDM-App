@@ -1,9 +1,11 @@
 "use client"
+import CreateDatasetForm from "@/components/datasets/CreateDatasetForm";
+import DialogWrapper from "@/components/DialogWrapper";
 import DatasetsGrid from "@/components/datasets/DatasetsGrid";
 import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import useDatasetsOverview from "@/hook/datasets/useDatasetsOverview";
-import { DatabaseIcon, RotateCcwIcon } from "lucide-react";
+import { DatabaseIcon, PlusSquareIcon, RotateCcwIcon } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
 import { Separator } from "../ui/separator";
 
@@ -35,6 +37,15 @@ export default function DatasetsGridSection() {
                         } )
                     </span>
                 </CardTitle>
+                <DialogWrapper
+                    content={<CreateDatasetForm />}
+                    trigger={
+                        <Button className='h-8 px-2 sm:px-4 sm:h-10'>
+                            <PlusSquareIcon size={18} className='me-1.5' />
+                            Create Dataset
+                        </Button>
+                    }
+                />
             </div>
             <Separator />
             <DatasetsGrid />
