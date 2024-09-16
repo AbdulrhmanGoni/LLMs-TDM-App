@@ -2,7 +2,7 @@ import { RotateCcwIcon } from 'lucide-react'
 import Alert from '../Alert'
 import { WithErrorAndRefetch } from '@/lib/FetchError'
 
-export default function DatasetOverviewBoxError({ refetch, error }: WithErrorAndRefetch) {
+export default function DatasetsOverviewBoxError({ refetch, error }: WithErrorAndRefetch) {
     return (
         <Alert
             variant='error'

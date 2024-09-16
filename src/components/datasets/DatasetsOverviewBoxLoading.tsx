@@ -1,7 +1,7 @@
 import { Card } from '../ui/card'
 import { Skeleton } from '../ui/skeleton'
 
-export default function DatasetOverviewBoxLoading() {
+export default function DatasetsOverviewBoxLoading() {
     return (
         <Card className='flex flex-col justify-center flex-1 h-full p-6 cursor-pointer'>
             <div className="flex flex-row items-center justify-between space-y-0 pb-3">
