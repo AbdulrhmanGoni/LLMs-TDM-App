@@ -11,17 +11,14 @@ export default function useDatasetsOverviewState() {
 
     const isAddedLastMonth = lastMonthDate < new Date(createdAt).getTime();
 
-    QueryClient.setQueryData<{ data: DatasetsOverview }>(
+    QueryClient.setQueryData<DatasetsOverview>(
       ["datasets-overview"],
       (preData) => {
         if (preData) {
           return {
-            data: {
-              totalDatasets: preData.data.totalDatasets + amount,
-              addedDatasetsLastMonth:
-                preData.data.addedDatasetsLastMonth +
-                (isAddedLastMonth ? amount : 0),
-            },
+            totalDatasets: preData.totalDatasets + amount,
+            addedDatasetsLastMonth:
+              preData.addedDatasetsLastMonth + (isAddedLastMonth ? amount : 0),
           };
         }
       }
