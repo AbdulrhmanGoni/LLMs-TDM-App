@@ -23,6 +23,7 @@ export default function useDatasetPage() {
     data: dataset,
     isFetching: datasetLoading,
     error: datasetError,
+    refetch: refetchDataset,
   } = useDataset(datasetId as string, !!datasetPageContext.dataset);
 
   return {
@@ -30,6 +31,7 @@ export default function useDatasetPage() {
     dataset: dataset || datasetPageContext.dataset,
     datasetLoading,
     datasetError,
+    refetchDataset,
     datasetInstructions,
     instructionsLoading,
     instructionsError,
