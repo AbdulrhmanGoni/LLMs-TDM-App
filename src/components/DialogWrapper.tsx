@@ -16,7 +16,7 @@ export default function DialogWrapper({ content, trigger }: DialogWrapperProps) 
             <DialogTrigger asChild>
                 {trigger}
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent aria-describedby={undefined}>
                 {content}
             </DialogContent>
         </Dialog>
