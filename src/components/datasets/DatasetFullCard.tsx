@@ -10,6 +10,7 @@ import { Button } from '../ui/button'
 import useDatasetPage from '@/hook/datasets/useDatasetPage'
 import DatasetFullCardLoading from './DatasetFullCardLoading'
 import DatasetFullCardError from './DatasetFullCardError'
+import DeleteDatasetButton from './DeleteDatasetButton'
 
 export default function DatasetFullCard() {
 
@@ -47,6 +48,12 @@ export default function DatasetFullCard() {
                     </p>
                 </div>
                 <div className="flex gap-2 ml-auto">
+                    <DeleteDatasetButton
+                        dataset={dataset}
+                        onDelete={() => { back() }}
+                        alertTitle='Deleting the dataset !'
+                        alertDescription='Are you sure that you want to delete this dataset?'
+                    />
                     <EditDatasetButton dataset={dataset} />
                 </div>
             </div>
