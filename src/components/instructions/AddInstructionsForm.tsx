@@ -15,6 +15,7 @@ import { Card, CardTitle } from "../ui/card"
 
 type AddInstructionsFormProps = {
   dataset: Dataset,
+  close: () => void
 }
 
 export default function AddInstructionsForm(props: AddInstructionsFormProps) {
@@ -97,7 +98,10 @@ export default function AddInstructionsForm(props: AddInstructionsFormProps) {
               />
             </div>
           </div>
-          <Button size="sm" type="submit" className="self-end">Add</Button>
+          <div className="flex gap-2 self-end">
+            <Button size="sm" type="submit" variant="outline" onClick={props.close}>Close</Button>
+            <Button size="sm" type="submit">Add</Button>
+          </div>
         </form>
       </Form>
     </Card>
