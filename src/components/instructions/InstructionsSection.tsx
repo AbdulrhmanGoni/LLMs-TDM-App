@@ -8,11 +8,16 @@ import { NotepadTextIcon, ScrollTextIcon } from "lucide-react";
 
 export default function InstructionsSection() {
 
-    const { dataset, addInstructionMode } = useDatasetPage();
+    const { dataset, addInstructionMode, setAddInstructionMode } = useDatasetPage();
 
     if (dataset) {
         if (addInstructionMode) {
-            return <AddInstructionsForm dataset={dataset} />
+            return (
+                <AddInstructionsForm
+                    dataset={dataset}
+                    close={() => setAddInstructionMode(false)}
+                />
+            )
         }
         return (
             <div className="grid sm:grid-cols-2 gap-2 border p-2 pt-0 rounded-md">
