@@ -11,10 +11,10 @@ export default async function customFetchAPI<DataT = unknown>(
 ) {
   const Cookies = cookies();
 
-  const authentication = Cookies.get("LMMs_TDM_Authentication_Token")?.value;
+  const Authorization = Cookies.get("__session")?.value;
   const headers: HeadersInit = new Headers();
-  if (authentication) {
-    headers.set("Authentication", authentication);
+  if (Authorization) {
+    headers.set("Authorization", "Bearer " + Authorization);
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_BASE_URL || "";
