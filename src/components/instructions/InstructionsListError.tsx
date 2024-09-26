@@ -8,7 +8,7 @@ type InstructionsListError = WithErrorAndRefetch<{
 
 export default function InstructionsListError({ error, refetch, page }: InstructionsListError) {
   return (
-    <div className="flex flex-col gap-3 items-center justify-center col-span-full">
+    <div className="flex flex-col gap-3 items-center justify-center col-span-full h-full text-center">
       <OctagonXIcon size={55} className="text-destructive" />
       <h2 className="text-2xl">Error !</h2>
       <p className="text-muted-foreground">

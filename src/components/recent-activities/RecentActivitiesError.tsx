@@ -7,7 +7,7 @@ export default function RecentActivitiesError({ refetch, error }: WithErrorAndRe
         <div className="flex flex-col gap-3 flex-1 items-center justify-center col-span-full">
             <OctagonXIcon size={55} className="text-destructive" />
             <h2 className="text-xl">Recent Activities Error</h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-center">
                 An Error occurred while fetching the recent activities: <br />
                 {error?.message}
             </p>

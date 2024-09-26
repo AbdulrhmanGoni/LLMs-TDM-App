@@ -9,7 +9,7 @@ export default function DatasetsGrid() {
     const { data, isFetching, error, refetch } = useDatasetsGrid();
 
     return (
-        <div className="h-[500px] grid gap-3 md:grid-cols-2 flex-1 overflow-auto pe-1">
+        <div className="max-h-[500px] grid gap-3 md:grid-cols-2 flex-1 overflow-auto pe-1">
             {
                 isFetching ? <DatasetGridLoading /> :
                     error ? <DatasetsGridError refetch={refetch} error={error} /> :
