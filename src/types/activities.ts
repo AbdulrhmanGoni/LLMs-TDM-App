@@ -1,4 +1,4 @@
-type ActivitiesTypes = "New Resource" | "Modification";
+type ActivitiesTypes = "New Resource" | "Modification" | "Deletion";
 
 type ActivityBase = {
   activity: ActivitiesTypes;

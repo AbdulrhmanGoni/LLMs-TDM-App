@@ -6,8 +6,8 @@ import { DeleteInstructionButtonProps } from "@/components/instructions/DeleteIn
 import useInstructionsStatesManagement from "./useInstructionsStatesManagement";
 
 export default function useDeleteInstruction({
-  datasetId,
-  instructionId,
+  dataset,
+  instruction,
 }: DeleteInstructionButtonProps) {
   const { deleteInstructionState } = useInstructionsStatesManagement();
 
@@ -15,8 +15,8 @@ export default function useDeleteInstruction({
 
   const { mutateAsync, isPending, isSuccess, error } = useMutation({
     mutationKey: ["delete-instructions"],
-    onSuccess(res) {
-      deleteInstructionState(datasetId, instructionId);
+    onSuccess(_res) {
+      deleteInstructionState(dataset, instruction);
       toast({
         title: "The instruction has been deleted successfully",
         variant: "success",
@@ -25,7 +25,10 @@ export default function useDeleteInstruction({
     async mutationFn() {
       const { body } = await fetchAPI(`instructions`, {
         method: "DELETE",
-        search: { datasetId, instructionId },
+        search: {
+          datasetId: dataset._id,
+          instructionId: instruction._id,
+        },
       });
       return body;
     },

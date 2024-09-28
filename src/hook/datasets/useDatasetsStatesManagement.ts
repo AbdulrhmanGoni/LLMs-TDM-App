@@ -9,11 +9,8 @@ export default function useDatasetsStatesManagement() {
   const { addToDatasetsGrid, deleteFromDatasetsGrid, updateInDatasetsGrid } =
     useDatasetsGridState();
 
-  const {
-    addToRecentDatasetsActivities,
-    removeRecentDatasetsActivities,
-    updateRecentDatasetsActivities,
-  } = useRecentDatasetsActivitiesState();
+  const { addToRecentDatasetsActivities, updateRecentDatasetsActivities } =
+    useRecentDatasetsActivitiesState();
 
   const { increaseDatasetsCount, decreaseDatasetsCount } =
     useDatasetsOverviewState();
@@ -33,18 +30,21 @@ export default function useDatasetsStatesManagement() {
     updateDataset(updatedDataset._id, updatedDataset);
     updateInDatasetsGrid(updatedDataset);
     updateRecentDatasetsActivities(updatedDataset._id, updatedDataset);
-    const newActivity: DatasetActivity = {
+    addToRecentDatasetsActivities({
       dataset: updatedDataset,
       activity: "Modification",
       activityDate: new Date().toISOString(),
-    };
-    addToRecentDatasetsActivities(newActivity);
+    });
   }
 
   function deleteDatasetState(dataset: Dataset) {
     updateDataset(dataset._id, null);
     deleteFromDatasetsGrid(dataset._id);
-    removeRecentDatasetsActivities(dataset._id);
+    addToRecentDatasetsActivities({
+      activity: "Deletion",
+      activityDate: new Date().toISOString(),
+      dataset,
+    });
     decreaseDatasetsCount(dataset.createdAt);
   }
 

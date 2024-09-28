@@ -39,8 +39,8 @@ export default function InstructionFullCard() {
               <EditIcon size={17} onClick={() => setEditInstructionMode(true)} />
             </Button>
             <DeleteInstructionButton
-              datasetId={dataset._id}
-              instructionId={selectedInstruction._id}
+              dataset={dataset}
+              instruction={selectedInstruction}
             />
             <div className="ml-auto text-end text-sm text-muted-foreground">
               <p>Created: {timeAgo(selectedInstruction.createdAt)}</p>

@@ -57,28 +57,8 @@ export default function useRecentDatasetsActivitiesState() {
     );
   }
 
-  function removeRecentDatasetsActivities(datasetId: Dataset["_id"]) {
-    QueryClient.setQueryData<Activities | undefined>(
-      ["recent-activities"],
-      (preData) => {
-        if (preData) {
-          return {
-            datasetsActivities: preData.datasetsActivities.filter(
-              (activity) => activity.dataset._id !== datasetId
-            ),
-            instructionsActivities: preData.instructionsActivities.filter(
-              (activity) => activity.dataset._id !== datasetId
-            ),
-          };
-        }
-        return undefined;
-      }
-    );
-  }
-
   return {
     addToRecentDatasetsActivities,
     updateRecentDatasetsActivities,
-    removeRecentDatasetsActivities,
   };
 }

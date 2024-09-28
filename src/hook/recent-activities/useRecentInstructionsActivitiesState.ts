@@ -51,28 +51,8 @@ export default function useRecentInstructionsActivitiesState() {
     );
   }
 
-  function removeRecentInstructionsActivities(
-    instructionId: Instruction["_id"]
-  ) {
-    QueryClient.setQueryData<Activities | undefined>(
-      ["recent-activities"],
-      (preData) => {
-        if (preData) {
-          return {
-            ...preData,
-            instructionsActivities: preData.instructionsActivities.filter(
-              (activity) => activity.instruction._id !== instructionId
-            ),
-          };
-        }
-        return preData;
-      }
-    );
-  }
-
   return {
     addToRecentInstructionsActivities,
     updateRecentInstructionsActivities,
-    removeRecentInstructionsActivities,
   };
 }
