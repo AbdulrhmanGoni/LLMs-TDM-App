@@ -4,8 +4,8 @@ import { Button } from '../ui/button'
 import useDeleteInstruction from '@/hook/instructions/useDeleteInstruction'
 
 export type DeleteInstructionButtonProps = {
-    datasetId: Dataset["_id"],
-    instructionId: Instruction["_id"]
+    dataset: Dataset,
+    instruction: Instruction
 }
 
 export default function DeleteInstructionButton(props: DeleteInstructionButtonProps) {

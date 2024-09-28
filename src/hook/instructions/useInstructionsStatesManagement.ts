@@ -20,7 +20,6 @@ export default function useInstructionsStatesManagement() {
   const {
     addToRecentInstructionsActivities,
     updateRecentInstructionsActivities,
-    removeRecentInstructionsActivities,
   } = useRecentInstructionsActivitiesState();
 
   function addNewInstructionState(dataset: Dataset, instruction: Instruction) {
@@ -68,26 +67,28 @@ export default function useInstructionsStatesManagement() {
     addToRecentInstructionsActivities(newActivity);
   }
 
-  function deleteInstructionState(
-    datasetId: Dataset["_id"],
-    instructionId: Instruction["_id"]
-  ) {
-    removeInstructionFromDataset(datasetId, instructionId);
-    updateDatasetInstructionsCount(datasetId, -1);
+  function deleteInstructionState(dataset: Dataset, instruction: Instruction) {
+    removeInstructionFromDataset(dataset._id, instruction._id);
+    updateDatasetInstructionsCount(dataset._id, -1);
     setSelectedInstruction((selected) => {
-      if (selected?._id === instructionId) {
+      if (selected?._id === instruction._id) {
         return null;
       }
       return selected;
     });
     updateInDatasetsGrid(() => ({
-      id: datasetId,
+      id: dataset._id,
       updatefn: (pre) => ({
         ...pre,
         instructionsCount: pre.instructionsCount + 1,
       }),
     }));
-    removeRecentInstructionsActivities(instructionId);
+    addToRecentInstructionsActivities({
+      activity: "Deletion",
+      activityDate: new Date().toISOString(),
+      dataset,
+      instruction,
+    });
   }
 
   return {
