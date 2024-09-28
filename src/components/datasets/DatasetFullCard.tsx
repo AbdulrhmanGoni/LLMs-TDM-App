@@ -7,6 +7,8 @@ import { Separator } from '../ui/separator'
 import { Badge } from '../ui/badge'
 import { useRouter } from 'next/navigation'
 import { Button } from '../ui/button'
+import ExportDatasetButton from './ExportDatasetButton'
+import DatasetExportingState from './DatasetExportingState'
 import useDatasetPage from '@/hook/datasets/useDatasetPage'
 import DatasetFullCardLoading from './DatasetFullCardLoading'
 import DatasetFullCardError from './DatasetFullCardError'
@@ -48,6 +50,7 @@ export default function DatasetFullCard() {
                     </p>
                 </div>
                 <div className="flex gap-2 ml-auto">
+                    <ExportDatasetButton dataset={dataset} />
                     <DeleteDatasetButton
                         dataset={dataset}
                         onDelete={() => { back() }}
@@ -84,6 +87,7 @@ export default function DatasetFullCard() {
                     Last modified: {timeAgo(dataset.updatedAt)}
                 </p>
             </div>
+            <DatasetExportingState dataset={dataset} />
         </Card>
     )
 }
