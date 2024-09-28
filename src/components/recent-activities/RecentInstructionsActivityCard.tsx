@@ -10,23 +10,20 @@ import { Card } from "../ui/card";
 import timeAgo from "@/utils/timeAgo";
 import { useRouter } from "next/navigation";
 import { cn } from "@/utils/tw-cn";
-import useDatasetPageContext from "@/hook/datasets/useDatasetPageContext";
 
 export default function RecentInstructionsActivityCard({ activity }: { activity: InstructionActivity }) {
 
-    const { setDataset, setSelectedInstruction } = useDatasetPageContext()
     const { push } = useRouter()
 
     const textClasses = "line-clamp-1"
 
     const isNew = activity.activity === "New Resource"
+    const isDeleted = activity.activity === "Deletion"
 
     return (
         <Card
             className="flex flex-col gap-2 p-3 text-nowrap transition-all group hover:bg-accent cursor-pointer"
             onClick={() => {
-                setSelectedInstruction(activity.instruction)
-                setDataset(activity.dataset)
                 push(`/datasets/${activity.dataset._id}`)
             }}
         >
@@ -34,7 +31,7 @@ export default function RecentInstructionsActivityCard({ activity }: { activity:
                 cn(
                     textClasses,
                     "font-semibold text-sm flex items-center gap-1 text-muted-foreground",
-                    activity.instruction.systemMessage ? "" : "line-through"
+                    !activity.instruction.systemMessage && "line-through"
                 )
             }>
                 <MessageCircleCodeIcon className="size-4 sm:size-5" />
@@ -59,8 +56,11 @@ export default function RecentInstructionsActivityCard({ activity }: { activity:
                         {activity.dataset.name}
                     </p>
                 </div>
-                <Badge variant={isNew ? "success" : "default"} className='py-1'>
-                    {isNew ? "Added" : "Modified"}: {timeAgo(activity.activityDate)}
+                <Badge
+                    variant={isNew ? "success" : isDeleted ? "destructive" : "default"}
+                    className='py-1 text-sm'
+                >
+                    {isNew ? "Added" : isDeleted ? "Deleted" : "Modified"}: {timeAgo(activity.activityDate)}
                 </Badge>
             </div>
         </Card>
