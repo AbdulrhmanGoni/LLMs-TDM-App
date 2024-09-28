@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/sonner";
 import DatasetPageContext from "@/contexts/DatasetPageContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from '@clerk/themes'
+import ExportingDatasetsContext from "@/contexts/ExportingDatasetsContext";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <ClerkProvider appearance={{ baseTheme: dark }}>
           <ReactQueryProvider>
             <TooltipProvider>
+              <ExportingDatasetsContext>
                 <DatasetPageContext>
                   <Header />
                   <main className="flex h-full flex-1">
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                   </main>
                   <Toaster />
                 </DatasetPageContext>
+              </ExportingDatasetsContext>
             </TooltipProvider>
           </ReactQueryProvider>
         </ClerkProvider>
