@@ -1,14 +1,21 @@
+"use client";
+import { useUser } from '@clerk/nextjs';
 import Greeting from './Greeting'
+import GreetingLoading from './GreetingLoading';
 
 export default function HomePageGreeting() {
+    const { user, isLoaded } = useUser();
     return (
-        <Greeting
-            greetingMessage='Hi Abdulrhman Goni👋'
-            description={[
-                "Welcome back to your training datasets management application",
-                "Where you create and manage your LLMs training datasets"
-            ]}
-            illutrationImageSrc="greeting-1.svg"
-        />
+        isLoaded && user ?
+            <Greeting
+                greetingMessage={`Hi ${user.firstName} ${user.lastName}👋`}
+                description={
+                    <p>
+                        Welcome back to your training datasets management application, <br />
+                        Where you create and manage your LLMs training datasets
+                    </p>
+                }
+                illutrationImageSrc="greeting-1.svg"
+            /> : <GreetingLoading />
     )
 }
