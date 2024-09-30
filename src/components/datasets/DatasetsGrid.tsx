@@ -3,6 +3,7 @@ import useDatasetsGrid from '@/hook/datasets/useDatasetsGrid'
 import DatasetGridCard from './DatasetGridCard'
 import DatasetGridLoading from './DatasetGridLoading'
 import DatasetsGridError from './DatasetsGridError'
+import NoDatasetsMessage from './NoDatasetsMessage'
 
 export default function DatasetsGrid() {
 
@@ -13,9 +14,9 @@ export default function DatasetsGrid() {
             {
                 isFetching ? <DatasetGridLoading /> :
                     error ? <DatasetsGridError refetch={refetch} error={error} /> :
-                        data?.map((dataset) => (
+                        data?.length ? data.map((dataset) => (
                             <DatasetGridCard key={dataset._id} dataset={dataset} />
-                        ))
+                        )) : <NoDatasetsMessage />
             }
         </div>
     )
