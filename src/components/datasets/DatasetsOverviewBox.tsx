@@ -25,7 +25,11 @@ export default function DatasetsOverviewBox() {
                     <div>
                         <span className="text-2xl font-bold">{data?.totalDatasets}</span>
                         <p className="text-md text-muted-foreground">
-                            +{data?.addedDatasetsLastMonth} since last month
+                            {
+                                data?.addedDatasetsLastMonth ?
+                                    `+${data?.addedDatasetsLastMonth} since last month` :
+                                    "no datasets added last month"
+                            }
                         </p>
                     </div>
                 </Card>
