@@ -11,7 +11,7 @@ export type DatasetInstructionsQueryResponse = {
 
 export default function useDatasetInstructions() {
   const { datasetId } = useParams();
-  const initialPaginationModel = { page: 1, pageSize: 4 };
+  const initialPaginationModel = { page: 1, pageSize: 15 };
   const [paginationModel, setPaginationModel] = useState<PaginationModel>(
     initialPaginationModel
   );
