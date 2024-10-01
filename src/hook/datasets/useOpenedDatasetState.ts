@@ -17,6 +17,8 @@ export default function useOpenedDatasetState() {
     if (dataset?._id === datasetId) {
       setDataset(updateData);
     }
+    !updateData &&
+      QueryClient.resetQueries({ queryKey: ["dataset", datasetId] });
   }
 
   function updateDatasetInstructionsCount(
