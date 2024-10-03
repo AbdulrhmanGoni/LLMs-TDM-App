@@ -16,3 +16,4 @@ them in Retrival Argumented Generation (RAG) systems.
 - React + Next.js
 - Typescript
 - Tailwind + Shadcn/ui
+- [Clerk](https://clerk.com/) (for users management and authenticating)
