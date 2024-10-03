@@ -22,6 +22,13 @@ export default function useDeleteInstruction({
         variant: "success",
       });
     },
+    onError(error) {
+      toast({
+        title: "Error while deleting the instruction !",
+        description: error.message,
+        variant: "error",
+      });
+    },
     async mutationFn() {
       const { body } = await fetchAPI(`instructions`, {
         method: "DELETE",
