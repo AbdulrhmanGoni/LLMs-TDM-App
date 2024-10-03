@@ -15,6 +15,13 @@ export default function useDeleteDataset() {
         variant: "success",
       });
     },
+    onError(error) {
+      toast({
+        title: "Error while deleting the dataset !",
+        description: error.message,
+        variant: "error",
+      });
+    },
     async mutationFn(dataset: Dataset) {
       const { body } = await fetchAPI(`datasets/${dataset._id}`, {
         method: "DELETE",
