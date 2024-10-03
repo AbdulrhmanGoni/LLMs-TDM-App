@@ -2,7 +2,7 @@
 
 LLMs Training Datasets Manager is a web application for creating and managing training datasets
 with different formats for training Large Language Models (LLMs) or for using
-them in Retrival Argumented Generation (RAG) systems.
+them in Retrieval Augmented Generation (RAG) applications.
 
 # Features :sparkles:
 
