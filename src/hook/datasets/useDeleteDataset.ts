@@ -3,13 +3,14 @@ import useSonnerToast from "../useSonnerToast";
 import { useMutation } from "@tanstack/react-query";
 import useDatasetsStatesManagement from "./useDatasetsStatesManagement";
 
-export default function useDeleteDataset() {
+export default function useDeleteDataset(options?: { onSuccess?: () => void }) {
   const toast = useSonnerToast();
   const { deleteDatasetState } = useDatasetsStatesManagement();
 
   const { mutateAsync, isPending, isSuccess, error } = useMutation({
     mutationKey: ["delete-dataset"],
     onSuccess(_res) {
+      options?.onSuccess?.();
       toast({
         title: "The Dataset has been deleted successfully",
         variant: "success",

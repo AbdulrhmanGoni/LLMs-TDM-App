@@ -22,7 +22,9 @@ export default function DeleteDatasetButton({
     ButtonProps
 }: DeleteDatasetButton) {
 
-    const { deleteDataset, isPending } = useDeleteDataset()
+    const { deleteDataset, isPending } = useDeleteDataset({
+        onSuccess: onDelete,
+    })
 
     return (
         <>
@@ -31,7 +33,6 @@ export default function DeleteDatasetButton({
                 alertDescription={alertDescription}
                 onAgree={() => {
                     deleteDataset(dataset)
-                    onDelete?.()
                 }}
                 trigger={
                     <Button
