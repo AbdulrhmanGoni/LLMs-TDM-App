@@ -44,7 +44,7 @@ export default function ExportDatasetOptionsForm({ dataset }: { dataset: Dataset
                                 <SelectContent>
                                     {
                                         exportDatasetFormOptions.formats.map(
-                                            (format) => <SelectItem value={format}>{format}</SelectItem>
+                                            (format) => <SelectItem key={format} value={format}>{format}</SelectItem>
                                         )
                                     }
                                 </SelectContent>
@@ -71,7 +71,7 @@ export default function ExportDatasetOptionsForm({ dataset }: { dataset: Dataset
                                 <SelectContent>
                                     {
                                         exportDatasetFormOptions.handlers.map(
-                                            (handler) => <SelectItem value={handler}>{handler}</SelectItem>
+                                            (handler) => <SelectItem key={handler} value={handler}>{handler}</SelectItem>
                                         )
                                     }
                                 </SelectContent>
