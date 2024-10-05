@@ -27,7 +27,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col gap-2 container !px-2",
+          "bg-background font-sans antialiased flex flex-col gap-2 container !px-2",
           fontSans.variable
         )}
         style={{ marginLeft: "auto !important", marginRight: "auto !important" }}
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
               <ExportingDatasetsContext>
                 <DatasetPageContext>
                   <Header />
-                  <main className="flex h-full flex-1">
+                  <main className="flex min-h-screen flex-1">
                     {children}
                   </main>
                   <Toaster />
