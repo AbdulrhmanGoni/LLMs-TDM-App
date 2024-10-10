@@ -11,6 +11,7 @@ import DatasetPageContext from "@/contexts/DatasetPageContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from '@clerk/themes'
 import ExportingDatasetsContext from "@/contexts/ExportingDatasetsContext";
+import Footer from "@/components/Footer";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                   <main className="flex min-h-screen flex-1">
                     {children}
                   </main>
+                  <Footer />
                   <Toaster />
                 </DatasetPageContext>
               </ExportingDatasetsContext>
