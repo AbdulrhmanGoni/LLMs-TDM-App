@@ -27,13 +27,7 @@ export default async function startExportingDataset({
 
   const writableStream = await fileHandler.createWritable();
 
-  const sessionToken = document.cookie.split("; ").reduce((acc, cookie) => {
-    const cookieParts = cookie.split("=");
-    if (cookieParts[0] === "__session") {
-      acc = cookieParts[1];
-    }
-    return acc;
-  }, "");
+  const sessionToken = extractCookie("__session");
 
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_WS_BASE_URL;
   const url = `${baseUrl}/ws/export/${datasetId}?format=${format}&auth=${sessionToken}`;
