@@ -25,13 +25,13 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="space-y-3 col-auto">
-                <p className="text-lg">
-                    Made by {" "}
-                    <span className='font-semibold'>
-                        Abdulrhman Goni
-                    </span>
+                <p className="text-xl font-medium">
+                    Developer
                 </p>
                 <div className="flex gap-3 items-center">
+                    <span className='text-lg font-semibold'>
+                        Abdulrhman Goni:
+                    </span>
                     <a target="__blank" href="https://github.com/AbdulrhmanGoni">
                         <Image
                             src="/github-icon.svg"
