@@ -11,7 +11,8 @@ import {
     FormMessage
 } from '../ui/form'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
-import useExportDataset, { exportDatasetFormOptions } from '@/hook/datasets/useExportDataset'
+import useExportDataset from '@/hook/datasets/useExportDataset'
+import { exportDatasetFormOptions } from '@/validation/exportDatasetFormOptionsSchemaRules'
 
 export default function ExportDatasetOptionsForm({ dataset }: { dataset: Dataset }) {
 
