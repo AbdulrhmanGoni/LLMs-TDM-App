@@ -2,16 +2,7 @@ import { z } from "zod";
 import useExportingDatasetsContext from "../useExportingDatasetsContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-export const exportDatasetFormOptions = {
-  formats: ["CSV", "JSONL"],
-  handlers: ["App", "Browser"],
-} as const;
-
-const exportDatasetFormOptionsSchema = z.object({
-  format: z.enum(exportDatasetFormOptions.formats),
-  handler: z.enum(exportDatasetFormOptions.handlers),
-});
+import exportDatasetFormOptionsSchema from "@/validation/exportDatasetFormOptionsSchemaRules";
 
 export type ExportDatasetOptionsFormType = z.infer<
   typeof exportDatasetFormOptionsSchema
