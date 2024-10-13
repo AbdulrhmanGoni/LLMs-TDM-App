@@ -1,4 +1,4 @@
-import { TrashIcon } from 'lucide-react'
+import { LoaderIcon, TrashIcon } from 'lucide-react'
 import ActionWithAlert from '../ActionWithAlert'
 import { Button } from '../ui/button'
 import useDeleteInstruction from '@/hook/instructions/useDeleteInstruction'
@@ -10,7 +10,7 @@ export type DeleteInstructionButtonProps = {
 
 export default function DeleteInstructionButton(props: DeleteInstructionButtonProps) {
 
-    const { deleteTheInstruction } = useDeleteInstruction(props)
+    const { deleteTheInstruction, isPending } = useDeleteInstruction(props)
 
     return (
         <ActionWithAlert
@@ -24,8 +24,12 @@ export default function DeleteInstructionButton(props: DeleteInstructionButtonPr
                     size="icon"
                     variant="destructive"
                     className="size-8"
+                    disabled={isPending}
                 >
-                    <TrashIcon size={17} />
+                    {
+                        isPending ? <LoaderIcon size={17} className="animate-spin" />
+                            : <TrashIcon size={17} />
+                    }
                 </Button>
             }
         />

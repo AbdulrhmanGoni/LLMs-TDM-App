@@ -12,6 +12,7 @@ import {
 import { Button } from "../ui/button"
 import { DialogTitle } from "../ui/dialog"
 import FetchError from "@/lib/FetchError"
+import { LoaderIcon } from "lucide-react"
 
 type DatasetFormProps = {
     form: any,
@@ -22,7 +23,7 @@ type DatasetFormProps = {
     error: FetchError | null;
 }
 
-export default function DatasetForm({ form, onSubmit, formTitle, formDescription }: DatasetFormProps) {
+export default function DatasetForm({ form, onSubmit, formTitle, formDescription, isLoading }: DatasetFormProps) {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -43,7 +44,7 @@ export default function DatasetForm({ form, onSubmit, formTitle, formDescription
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input {...field} disabled={isLoading || field.disabled} />
                                     </FormControl>
                                     <FormDescription>
                                         This is the name of your dataset.
@@ -61,7 +62,7 @@ export default function DatasetForm({ form, onSubmit, formTitle, formDescription
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
-                                        <Textarea {...field} />
+                                        <Textarea {...field} disabled={isLoading || field.disabled} />
                                     </FormControl>
                                     <FormDescription>
                                         This is the description of your dataset
@@ -72,7 +73,20 @@ export default function DatasetForm({ form, onSubmit, formTitle, formDescription
                         />
                     </div>
                 </div>
-                <Button type="submit">Submit</Button>
+                <Button
+                    type="submit"
+                    size="sm"
+                    disabled={isLoading}
+                >
+                    {
+                        isLoading ?
+                            <>
+                                Submitting...
+                                < LoaderIcon size={16} className="ml-2 animate-spin" />
+                            </>
+                            : "Submit"
+                    }
+                </Button>
             </form>
         </Form>
     )
