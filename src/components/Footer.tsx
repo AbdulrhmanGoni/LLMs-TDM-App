@@ -29,9 +29,9 @@ export default function Footer() {
                     Developer
                 </p>
                 <div className="flex gap-3 items-center">
-                    <span className='text-lg font-semibold'>
+                    <p className='text-lg font-semibold'>
                         Abdulrhman Goni:
-                    </span>
+                    </p>
                     <a target="__blank" href="https://github.com/AbdulrhmanGoni">
                         <Image
                             src="/github-icon.svg"
