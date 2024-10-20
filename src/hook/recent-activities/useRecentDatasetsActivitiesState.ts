@@ -21,44 +21,7 @@ export default function useRecentDatasetsActivitiesState() {
     );
   }
 
-  function updateRecentDatasetsActivities(
-    datasetId: Dataset["_id"],
-    updateData: Dataset | ((pre?: Dataset) => Dataset)
-  ) {
-    QueryClient.setQueryData<Activities | undefined>(
-      ["recent-activities"],
-      (preData) => {
-        if (preData) {
-          return {
-            datasetsActivities: preData.datasetsActivities.map((activity) => {
-              if (activity.dataset._id === datasetId) {
-                activity.dataset =
-                  typeof updateData === "function"
-                    ? updateData(activity.dataset)
-                    : updateData;
-              }
-              return activity;
-            }),
-            instructionsActivities: preData.instructionsActivities.map(
-              (activity) => {
-                if (activity.dataset._id === datasetId) {
-                  activity.dataset =
-                    typeof updateData === "function"
-                      ? updateData(activity.dataset)
-                      : updateData;
-                }
-                return activity;
-              }
-            ),
-          };
-        }
-        return undefined;
-      }
-    );
-  }
-
   return {
     addToRecentDatasetsActivities,
-    updateRecentDatasetsActivities,
   };
 }

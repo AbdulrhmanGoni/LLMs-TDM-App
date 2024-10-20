@@ -17,10 +17,8 @@ export default function useInstructionsStatesManagement() {
 
   const { updateInDatasetsGrid } = useDatasetsGridState();
 
-  const {
-    addToRecentInstructionsActivities,
-    updateRecentInstructionsActivities,
-  } = useRecentInstructionsActivitiesState();
+  const { addToRecentInstructionsActivities } =
+    useRecentInstructionsActivitiesState();
 
   function addNewInstructionState(dataset: Dataset, instruction: Instruction) {
     const newActivity: InstructionActivity = {
@@ -60,10 +58,6 @@ export default function useInstructionsStatesManagement() {
       }
       return selected;
     });
-    updateRecentInstructionsActivities(
-      updatedInstruction._id,
-      updatedInstruction
-    );
     addToRecentInstructionsActivities(newActivity);
   }
 

@@ -9,8 +9,7 @@ export default function useDatasetsStatesManagement() {
   const { addToDatasetsGrid, deleteFromDatasetsGrid, updateInDatasetsGrid } =
     useDatasetsGridState();
 
-  const { addToRecentDatasetsActivities, updateRecentDatasetsActivities } =
-    useRecentDatasetsActivitiesState();
+  const { addToRecentDatasetsActivities } = useRecentDatasetsActivitiesState();
 
   const { increaseDatasetsCount, decreaseDatasetsCount } =
     useDatasetsOverviewState();
@@ -29,7 +28,6 @@ export default function useDatasetsStatesManagement() {
   function updateDatasetState(updatedDataset: Dataset) {
     updateDataset(updatedDataset._id, updatedDataset);
     updateInDatasetsGrid(updatedDataset);
-    updateRecentDatasetsActivities(updatedDataset._id, updatedDataset);
     addToRecentDatasetsActivities({
       dataset: updatedDataset,
       activity: "Modification",
