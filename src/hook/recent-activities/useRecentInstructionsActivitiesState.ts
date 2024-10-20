@@ -23,36 +23,7 @@ export default function useRecentInstructionsActivitiesState() {
     );
   }
 
-  function updateRecentInstructionsActivities(
-    instructionId: Instruction["_id"],
-    updateData: Instruction | ((pre?: Instruction) => Instruction)
-  ) {
-    QueryClient.setQueryData<Activities | undefined>(
-      ["recent-activities"],
-      (preData) => {
-        if (preData) {
-          return {
-            ...preData,
-            instructionsActivities: preData.instructionsActivities.map(
-              (activity) => {
-                if (activity.instruction._id === instructionId) {
-                  activity.instruction =
-                    typeof updateData === "function"
-                      ? updateData(activity.instruction)
-                      : updateData;
-                }
-                return activity;
-              }
-            ),
-          };
-        }
-        return preData;
-      }
-    );
-  }
-
   return {
     addToRecentInstructionsActivities,
-    updateRecentInstructionsActivities,
   };
 }
