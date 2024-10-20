@@ -6,7 +6,7 @@ export default function useDatasetsGridState() {
   function addToDatasetsGrid(dataset: Dataset) {
     QueryClient.setQueryData<Dataset[]>(["datasets"], (preData) => {
       if (preData) {
-        return [dataset, ...preData];
+        return [...preData, dataset];
       }
     });
   }
