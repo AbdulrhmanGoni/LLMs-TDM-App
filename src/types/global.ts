@@ -12,3 +12,8 @@ type ErrorDetails<ErrorT> = {
   status?: number;
   error?: ErrorT | undefined;
 };
+
+type HuggingfaceAccount = {
+  username: string;
+  emailVerified: boolean;
+};
