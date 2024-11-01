@@ -49,6 +49,10 @@ function updateDatasetInstructionsCountFn(dataset: Dataset, amount: number) {
     return {
       ...dataset,
       instructionsCount: dataset.instructionsCount + amount,
+      repository: dataset.repository && {
+        ...dataset.repository,
+        isUpToDate: false,
+      },
     };
   } else return dataset;
 }

@@ -33,19 +33,5 @@ export default function DatasetFullCardLoading() {
                 <Skeleton className='w-28 h-5' />
             </div>
         </Card>
-        // <Card className="flex w-full flex-wrap lg:flex-nowrap gap-3 px-3 py-4 justify-between">
-        //     <div className="space-y-2 w-full">
-
-        //         
-        //         <Skeleton className='w-40 h-5' />
-        //     </div>
-        //     <div className="flex lg:flex-col items-end gap-2 justify-between">
-        //         <div className="flex gap-2">
-        //             <Skeleton className='w-9 h-9' />
-        //             <Skeleton className='w-9 h-9' />
-        //         </div>
-        //         <Skeleton className='w-40 h-5' />
-        //     </div>
-        // </Card>
     )
 }

@@ -13,6 +13,7 @@ import useDatasetPage from '@/hook/datasets/useDatasetPage'
 import DatasetFullCardLoading from './DatasetFullCardLoading'
 import DatasetFullCardError from './DatasetFullCardError'
 import DeleteDatasetButton from './DeleteDatasetButton'
+import HuggingfaceDatasetsRepositoriesSection from '../huggingface/HuggingfaceDatasetsRepositoriesSection'
 
 export default function DatasetFullCard() {
 
@@ -63,7 +64,7 @@ export default function DatasetFullCard() {
             <Separator />
             <div className="flex gap-3 items-center font-medium">
                 <MessageCircleMoreIcon />
-                <p>Instructions:</p>
+                <p className='text-lg'>Instructions:</p>
                 <Badge>{dataset.instructionsCount}</Badge>
                 <Button
                     size='sm'
@@ -88,6 +89,8 @@ export default function DatasetFullCard() {
                 </p>
             </div>
             <DatasetExportingState dataset={dataset} />
+            <Separator />
+            <HuggingfaceDatasetsRepositoriesSection dataset={dataset} />
         </Card>
     )
 }
