@@ -71,10 +71,18 @@ export default function UseUpdateInstructionForm({
   });
 
   async function onSubmit(instructionForm: UpdateInstructionsInput) {
-    if (Object.values(instructionForm).some((data) => !!data)) {
+    const thereAreChanges = Object.keys(form.formState.dirtyFields)
+      .values()
+      .some((value) => value);
+
+    if (thereAreChanges) {
       await mutateAsync(instructionForm);
     } else {
-      //
+      toast({
+        title: "No Changes",
+        description: "You did not make any changes on the instruction.",
+        variant: "warning",
+      });
     }
   }
 
