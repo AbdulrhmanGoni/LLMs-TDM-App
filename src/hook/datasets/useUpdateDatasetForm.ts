@@ -21,7 +21,15 @@ type ResponseType = {
   message: string;
 };
 
-export default function useUpdateDatasetForm(dataset: Dataset) {
+type UseUpdateDatasetFormProps = {
+  dataset: Dataset;
+  closeForm: () => void;
+};
+
+export default function useUpdateDatasetForm({
+  dataset,
+  closeForm,
+}: UseUpdateDatasetFormProps) {
   const form = useForm<UpdateDatasetInput>({
     resolver: zodResolver(datasetFormSchema),
     defaultValues: {
@@ -41,6 +49,7 @@ export default function useUpdateDatasetForm(dataset: Dataset) {
   >({
     mutationKey: ["update-dataset"],
     onSuccess(res) {
+      closeForm();
       updateDatasetState(res.data);
       toast({
         title: "Successful dataset update",

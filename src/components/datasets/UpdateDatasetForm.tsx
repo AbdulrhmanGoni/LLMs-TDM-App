@@ -2,14 +2,19 @@
 import useUpdateDatasetForm from "@/hook/datasets/useUpdateDatasetForm"
 import DatasetForm from "./DatasetForm"
 
-export default function UpdateDatasetForm({ dataset }: { dataset: Dataset }) {
+type UpdateDatasetFormProps = {
+    dataset: Dataset,
+    closeForm: () => void
+}
+
+export default function UpdateDatasetForm({ dataset, closeForm }: UpdateDatasetFormProps) {
 
     const {
         form,
         onSubmit,
         isPending,
         error,
-    } = useUpdateDatasetForm(dataset);
+    } = useUpdateDatasetForm({ dataset, closeForm });
 
     return (
         <DatasetForm
