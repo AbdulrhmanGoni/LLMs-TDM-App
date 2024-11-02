@@ -59,10 +59,18 @@ export default function useUpdateDatasetForm(dataset: Dataset) {
   });
 
   async function onSubmit(updateDataset: UpdateDatasetInput) {
-    if (Object.values(updateDataset).some((data) => !!data)) {
+    const thereAreChanges = Object.keys(form.formState.dirtyFields)
+      .values()
+      .some((value) => value);
+
+    if (thereAreChanges) {
       await mutateAsync(updateDataset);
     } else {
-      //
+      toast({
+        title: "No Changes",
+        description: "You did not make any changes on the dataset.",
+        variant: "warning",
+      });
     }
   }
 
