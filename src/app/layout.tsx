@@ -43,7 +43,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                     {children}
                   </main>
                   <Footer />
-                  <Toaster />
+                  <Toaster duration={10000} />
                 </DatasetPageContext>
               </ExportingDatasetsContext>
             </TooltipProvider>
