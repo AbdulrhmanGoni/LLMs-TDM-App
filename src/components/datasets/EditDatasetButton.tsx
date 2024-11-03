@@ -11,7 +11,9 @@ type EditDatasetButton = {
 export default function EditDatasetButton({ dataset }: EditDatasetButton) {
     return (
         <DialogWrapper
-            content={<UpdateDatasetForm dataset={dataset} />}
+            content={
+                ({ closeDialog }) => <UpdateDatasetForm closeForm={closeDialog} dataset={dataset} />
+            }
             trigger={
                 <Button size="icon" className="size-7 sm:size-8">
                     <EditIcon size={17} />
