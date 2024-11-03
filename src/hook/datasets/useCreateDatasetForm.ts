@@ -49,6 +49,12 @@ export default function useCreateDatasetForm() {
       form.reset(defaultValues);
       form.clearErrors();
     },
+    onError(error) {
+      toast({
+        title: error.message,
+        variant: "error",
+      });
+    },
     async mutationFn(newDataset: CreaetDatasetInput) {
       const { body } = await fetchAPI<ResponseType>("datasets", {
         method: "POST",
