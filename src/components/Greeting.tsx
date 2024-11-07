@@ -21,6 +21,7 @@ export default function Greeting({ greetingMessage, description, illutrationImag
                 width={200}
                 height={165}
                 style={{ height: 165 }}
+                className="hidden sm:block"
             />
         </Card>
     )
