@@ -39,7 +39,7 @@ export default function DatasetsOverviewBox() {
                             onClick={() => push("/datasets")}
                         >
                             {
-                                data && data.totalDatasets > 7 ? "Datasets page" :
+                                data && data.totalDatasets > 1 ? "Datasets page" :
                                 "Create your first dataset"
                             }
                             <ArrowRightIcon size={17} />
