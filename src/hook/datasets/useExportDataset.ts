@@ -3,6 +3,7 @@ import useExportingDatasetsContext from "../useExportingDatasetsContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import exportDatasetFormOptionsSchema from "@/validation/exportDatasetFormOptionsSchemaRules";
+import downloadDatasetRequest from "@/lib/downloadDatasetRequest";
 
 export type ExportDatasetOptionsFormType = z.infer<
   typeof exportDatasetFormOptionsSchema
