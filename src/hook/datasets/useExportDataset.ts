@@ -23,7 +23,8 @@ export default function useExportDataset(dataset: Dataset) {
       !datasetExportingState?.isExporting && exportDataset(dataset, options);
     } else {
       downloadDatasetRequest(
-        `export/${dataset._id}?format=${options.format}`
+        `export/${dataset._id}?format=${options.format}`,
+        `dataset-${dataset._id}.${options.format.toLowerCase()}`
       )
     }
   }
