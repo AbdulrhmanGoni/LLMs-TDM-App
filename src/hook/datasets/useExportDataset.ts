@@ -17,7 +17,7 @@ export default function useExportDataset(dataset: Dataset) {
     useExportingDatasetsContext();
 
   function onSubmit(options: ExportDatasetOptionsFormType) {
-    if (options.handler === "App") {
+    if (options.handler === "App" && 'showSaveFilePicker' in window) {
       const datasetExportingState = getDatasetExportingState(dataset);
       !datasetExportingState?.isExporting && exportDataset(dataset, options);
     } else {
