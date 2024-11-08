@@ -21,11 +21,9 @@ export default function useExportDataset(dataset: Dataset) {
       const datasetExportingState = getDatasetExportingState(dataset);
       !datasetExportingState?.isExporting && exportDataset(dataset, options);
     } else {
-      const baseUrl = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
-      const link = document.createElement("a");
-      link.href = `${baseUrl}/export/${dataset._id}?format=${options.format}`;
-      document.body.appendChild(link);
-      link.click();
+      downloadDatasetRequest(
+        `export/${dataset._id}?format=${options.format}`
+      )
     }
   }
 
