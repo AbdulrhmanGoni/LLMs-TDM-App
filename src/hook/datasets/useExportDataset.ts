@@ -3,6 +3,7 @@ import useExportingDatasetsContext from "../useExportingDatasetsContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import exportDatasetFormOptionsSchema from "@/validation/exportDatasetFormOptionsSchemaRules";
+import downloadDatasetRequest from "@/lib/downloadDatasetRequest";
 
 export type ExportDatasetOptionsFormType = z.infer<
   typeof exportDatasetFormOptionsSchema
@@ -17,15 +18,13 @@ export default function useExportDataset(dataset: Dataset) {
     useExportingDatasetsContext();
 
   function onSubmit(options: ExportDatasetOptionsFormType) {
-    if (options.handler === "App") {
+    if (options.handler === "App" && 'showSaveFilePicker' in window) {
       const datasetExportingState = getDatasetExportingState(dataset);
       !datasetExportingState?.isExporting && exportDataset(dataset, options);
     } else {
-      const baseUrl = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
-      const link = document.createElement("a");
-      link.href = `${baseUrl}/export/${dataset._id}?format=${options.format}`;
-      document.body.appendChild(link);
-      link.click();
+      downloadDatasetRequest(
+        `export/${dataset._id}?format=${options.format}`
+      )
     }
   }
 

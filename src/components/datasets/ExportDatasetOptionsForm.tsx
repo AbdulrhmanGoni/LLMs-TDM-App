@@ -72,7 +72,18 @@ export default function ExportDatasetOptionsForm({ dataset }: { dataset: Dataset
                                 <SelectContent>
                                     {
                                         exportDatasetFormOptions.handlers.map(
-                                            (handler) => <SelectItem key={handler} value={handler}>{handler}</SelectItem>
+                                            (handler) => {
+                                                const notSupported = handler === "App" && !('showSaveFilePicker' in window)
+                                                return (
+                                                    <SelectItem
+                                                        key={handler}
+                                                        value={handler}
+                                                        disabled={notSupported}
+                                                    >
+                                                        {handler} {notSupported && "(Not Supported)"}
+                                                    </SelectItem>
+                                                )
+                                            }
                                         )
                                     }
                                 </SelectContent>
