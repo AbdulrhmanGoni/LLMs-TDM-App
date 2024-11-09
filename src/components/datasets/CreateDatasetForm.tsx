@@ -2,14 +2,14 @@
 import useCreateDatasetForm from "@/hook/datasets/useCreateDatasetForm"
 import DatasetForm from "./DatasetForm"
 
-export default function CreateDatasetForm() {
+export default function CreateDatasetForm({ closeForm }: { closeForm: () => void }) {
 
     const {
         form,
         onSubmit,
         isPending,
         error
-    } = useCreateDatasetForm();
+    } = useCreateDatasetForm({ closeForm });
 
     return (
         <DatasetForm

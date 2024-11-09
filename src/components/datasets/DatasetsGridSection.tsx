@@ -38,7 +38,9 @@ export default function DatasetsGridSection() {
                     </span>
                 </CardTitle>
                 <DialogWrapper
-                    content={<CreateDatasetForm />}
+                    content={
+                        ({ closeDialog }) => <CreateDatasetForm closeForm={closeDialog} />
+                    }
                     trigger={
                         <Button className='h-8 px-2 sm:px-4 sm:h-10'>
                             <PlusSquareIcon size={18} className='me-1.5' />
