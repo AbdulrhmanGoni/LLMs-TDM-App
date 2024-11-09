@@ -23,7 +23,7 @@ const defaultValues = {
   description: "",
 };
 
-export default function useCreateDatasetForm() {
+export default function useCreateDatasetForm({ closeForm }: { closeForm: () => void }) {
   const form = useForm<CreaetDatasetInput>({
     resolver: zodResolver(datasetFormSchema),
     defaultValues,
@@ -48,6 +48,7 @@ export default function useCreateDatasetForm() {
       });
       form.reset(defaultValues);
       form.clearErrors();
+      closeForm()
     },
     onError(error) {
       toast({
