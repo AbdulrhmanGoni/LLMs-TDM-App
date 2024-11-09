@@ -14,9 +14,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import useExportDataset from '@/hook/datasets/useExportDataset'
 import { exportDatasetFormOptions } from '@/validation/exportDatasetFormOptionsSchemaRules'
 
-export default function ExportDatasetOptionsForm({ dataset }: { dataset: Dataset }) {
+type ExportDatasetOptionsFormProps = {
+    dataset: Dataset;
+    closeForm: () => void
+}
 
-    const { form, onSubmit } = useExportDataset(dataset);
+export default function ExportDatasetOptionsForm({ dataset, closeForm }: ExportDatasetOptionsFormProps) {
+
+    const { form, onSubmit } = useExportDataset({ dataset, closeForm });
 
     return (
         <Form {...form}>

@@ -9,7 +9,12 @@ export type ExportDatasetOptionsFormType = z.infer<
   typeof exportDatasetFormOptionsSchema
 >;
 
-export default function useExportDataset(dataset: Dataset) {
+type UseExportDatasetProps = {
+  dataset: Dataset;
+  closeForm: () => void
+}
+
+export default function useExportDataset({ dataset, closeForm }: UseExportDatasetProps) {
   const form = useForm<ExportDatasetOptionsFormType>({
     resolver: zodResolver(exportDatasetFormOptionsSchema),
   });
@@ -27,6 +32,8 @@ export default function useExportDataset(dataset: Dataset) {
         `dataset-${dataset._id}.${options.format.toLowerCase()}`
       )
     }
+
+    closeForm()
   }
 
   return {
