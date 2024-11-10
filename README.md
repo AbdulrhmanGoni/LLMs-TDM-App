@@ -22,3 +22,29 @@ them in Retrieval Augmented Generation (RAG) applications.
 - Typescript
 - Tailwind + Shadcn/ui
 - [Clerk](https://clerk.com/) (for users management and authenticating)
+
+# Installation & Getting Started
+
+> Note !
+> You must have [Node.js](https://nodejs.org) installed on your machine to be able to run LLMs TDM Application
+
+1. Clone the repository and open project's directory
+```
+git clone https://github.com/AbdulrhmanGoni/LLMs-TDM-App.git
+cd LLMs-TDM-App
+```
+
+2. Install dependencies
+```
+npm install
+```
+
+3. Copy `.env.example` file into `.env.development` file and modify the variables in this file by following the guidelines inside `.env.example` file.
+```
+cp .env.example .env.development
+```
+
+4. Run LLMs TDM in development mode
+```
+npm run dev
+```
