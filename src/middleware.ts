@@ -4,18 +4,16 @@ const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
 
 const isDevEnv = process.env.NODE_ENV === "development";
 
+const authorizedParties = isDevEnv ? ["http://localhost:3000"] :
+  JSON.parse(process.env.AUTHORIZED_PARTIES || "[]")
+
 export default clerkMiddleware(
   (auth, request) => {
     if (!isPublicRoute(request)) {
       auth().protect();
     }
   },
-  {
-    // debug: isDevEnv,
-    authorizedParties: [
-      isDevEnv ? "http://localhost:3000" : process.env.AUTHORIZED_PARTY || "",
-    ],
-  }
+  { authorizedParties }
 );
 
 export const config = {
