@@ -16,7 +16,7 @@ export default function DatasetsOverviewBox() {
         isFetching ? <DatasetsOverviewBoxLoading /> :
             error ? <DatasetsOverviewBoxError error={error} refetch={refetch} /> : (
                 <Card
-                    className='flex flex-col justify-center flex-1 h-full p-6 cursor-pointer gap-2'
+                    className='flex flex-col justify-center flex-1 h-full p-6 gap-2'
                 >
                     <div className="flex flex-row items-center justify-between space-y-0">
                         <CardTitle className="text-xl font-medium">Datasets</CardTitle>
@@ -40,7 +40,7 @@ export default function DatasetsOverviewBox() {
                         >
                             {
                                 data?.totalDatasets ? "Datasets page" :
-                                "Create your first dataset"
+                                    "Create your first dataset"
                             }
                             <ArrowRightIcon size={17} />
                         </Button>
