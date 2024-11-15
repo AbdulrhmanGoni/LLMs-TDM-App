@@ -5,7 +5,7 @@ const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
 const isDevEnv = process.env.NODE_ENV === "development";
 
 const authorizedParties = isDevEnv ? ["http://localhost:3000"] :
-  JSON.parse(process.env.AUTHORIZED_PARTIES || "[]")
+  process.env.AUTHORIZED_PARTIES?.split(",") || []
 
 export default clerkMiddleware(
   (auth, request) => {
