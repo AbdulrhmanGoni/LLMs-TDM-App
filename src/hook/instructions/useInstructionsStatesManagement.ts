@@ -13,7 +13,7 @@ export default function useInstructionsStatesManagement() {
     removeInstructionFromDataset,
   } = useDatasetInstructionsState();
 
-  const { updateDatasetInstructionsCount } = useOpenedDatasetState();
+  const { updateDatasetInstructionsCount, updateDataset } = useOpenedDatasetState();
 
   const { updateInDatasetsGrid } = useDatasetsGridState();
 
@@ -59,6 +59,16 @@ export default function useInstructionsStatesManagement() {
       return selected;
     });
     addToRecentInstructionsActivities(newActivity);
+
+    if (dataset.repository) {
+      updateDataset(dataset._id, {
+        ...dataset,
+        repository: {
+          ...dataset.repository,
+          isUpToDate: false
+        }
+      })
+    }
   }
 
   function deleteInstructionState(dataset: Dataset, instruction: Instruction) {
