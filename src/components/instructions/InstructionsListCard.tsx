@@ -7,7 +7,12 @@ import useDatasetPageContext from "@/hook/datasets/useDatasetPageContext";
 
 export default function InstructionsListCard({ instruction }: { instruction: Instruction }) {
 
-  const { selectedInstruction, setSelectedInstruction } = useDatasetPageContext()
+  const {
+    selectedInstruction,
+    setSelectedInstruction,
+    setEditInstructionMode,
+    editInstructionMode
+  } = useDatasetPageContext()
 
   return (
     <Card
@@ -17,7 +22,10 @@ export default function InstructionsListCard({ instruction }: { instruction: Ins
           selectedInstruction?._id === instruction._id && "bg-muted"
         )
       }
-      onClick={() => { setSelectedInstruction(instruction) }}
+      onClick={() => {
+        setSelectedInstruction(instruction);
+        editInstructionMode && setEditInstructionMode(false);
+      }}
     >
       <div className="flex gap-1 text-muted-foreground">
         <MessageCircleCodeIcon className="size-4 sm:size-5" />
