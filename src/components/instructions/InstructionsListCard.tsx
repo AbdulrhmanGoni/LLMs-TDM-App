@@ -37,7 +37,7 @@ export default function InstructionsListCard({ instruction }: { instruction: Ins
         }>
           {
             instruction.systemMessage ?
-              instruction.systemMessage.substring(0, 60) : "No System Message"
+              instruction.systemMessage : "No System Message"
           }
         </p>
         <span className="ml-auto text-xs sm:text-sm text-nowrap">
