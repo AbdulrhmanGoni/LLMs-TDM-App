@@ -50,7 +50,7 @@ export default function InstructionsForm(
                   <FormItem>
                     <div className="flex gap-2 items-center">
                       <MessageCircleCodeIcon className="size-4 sm:size-5" />
-                      <FormLabel>System Message</FormLabel>
+                      <FormLabel>System Message (Optional)</FormLabel>
                     </div>
                     <FormControl>
                       <Textarea
